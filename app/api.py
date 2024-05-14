@@ -16,7 +16,9 @@ interpreter = tf.lite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
-
+@app.get("/")
+def home():
+    return {"message": "Hello World"}
 @app.post("/generate_images")
 async def generate_images(num_images: int):
     # Generate random latent vectors
